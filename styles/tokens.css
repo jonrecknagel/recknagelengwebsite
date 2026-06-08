@@ -1,0 +1,157 @@
+/* Recknagel Engineering — Design Tokens */
+:root {
+  /* Dark theme (default) — Red / Gray / Black */
+  --bg: #0A0A0B;
+  --bg-elev: #111113;
+  --bg-elev-2: #17171A;
+  --fg: #F2F2F2;
+  --fg-dim: #9A9A9E;
+  --fg-faint: #5C5C60;
+  --line: rgba(255, 255, 255, 0.07);
+  --line-strong: rgba(255, 255, 255, 0.15);
+  --accent: #D11F2A;
+  --accent-hi: #F0323E;
+  --accent-deep: #8E0F18;
+  --accent-glow: rgba(209, 31, 42, 0.45);
+  --steel: #6B7280;
+  --steel-dark: #3A3A3E;
+  --panel: #141416;
+  --panel-edge: rgba(255,255,255,0.04);
+  --concrete: #8A8A8C;
+  --concrete-dark: #4A4A4D;
+
+  /* Type */
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Fraunces", "Geist", serif;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur-fast: 180ms;
+  --dur: 420ms;
+  --dur-slow: 900ms;
+
+  /* Layout */
+  --gutter: clamp(20px, 4vw, 48px);
+  --max: 1440px;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #F4F4F4;
+  --bg-elev: #EAEAEA;
+  --bg-elev-2: #DEDEDE;
+  --fg: #0A0A0B;
+  --fg-dim: #4A4A4D;
+  --fg-faint: #8A8A8E;
+  --line: rgba(10, 10, 11, 0.08);
+  --line-strong: rgba(10, 10, 11, 0.18);
+  --accent: #C8151F;
+  --accent-hi: #E52330;
+  --accent-deep: #8E0F18;
+  --accent-glow: rgba(200, 21, 31, 0.22);
+  --concrete: #6B6B6E;
+  --concrete-dark: #3A3A3E;
+  --panel: #E8E8E8;
+  --panel-edge: rgba(0,0,0,0.04);
+  color-scheme: light;
+}
+
+:root[data-motion="off"] * {
+  animation-duration: 0.001ms !important;
+  animation-delay: 0ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+body {
+  transition: background var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; background: none; border: none; color: inherit; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--accent); color: #fff; }
+
+.mono { font-family: var(--font-mono); font-feature-settings: "ss01"; letter-spacing: -0.01em; }
+.display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.025em; }
+.uplabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-faint); }
+
+/* Grain overlay */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Utility */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Hairline */
+.hairline { height: 1px; background: var(--line); width: 100%; }
+
+/* Magnetic button */
+.magnet {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-elev);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast), border-color var(--dur-fast);
+  will-change: transform;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.magnet:hover { background: var(--bg-elev-2); border-color: var(--line-strong); }
+.magnet.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 10px 40px -10px var(--accent-glow);
+}
+.magnet.primary:hover { background: var(--accent); filter: brightness(1.08); }
+.magnet .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: currentColor;
+  opacity: 0.6;
+}
+.magnet .arrow {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.magnet:hover .arrow { transform: translateX(4px); }

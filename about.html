@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var t=localStorage.getItem('re-theme');if(t==='light'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+<title>About — Recknagel Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/bw.css">
+<style>
+.ab-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(34px,6vw,90px);align-items:start;padding:clamp(60px,9vh,110px) 0;}
+.ab-portrait{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);position:sticky;top:100px;}
+.ab-portrait .ph{width:100%;height:100%;background-size:cover;background-position:center top;filter:grayscale(1) contrast(1.08) brightness(.9);}
+.ab-portrait .cap{position:absolute;left:18px;bottom:16px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+.ab-body h2{font-family:var(--font-display);font-weight:300;font-size:clamp(28px,3.6vw,52px);line-height:1.02;letter-spacing:-0.03em;}
+.ab-body h2 em{font-style:italic;}
+.ab-body p{margin-top:22px;max-width:56ch;font-size:16.5px;line-height:1.7;color:var(--fg-dim);}
+.ab-body p .em{color:var(--fg);}
+.ab-quote{margin:clamp(30px,5vh,50px) 0;padding-left:24px;border-left:2px solid var(--accent);font-family:var(--font-display);font-weight:300;font-style:italic;font-size:clamp(22px,2.6vw,34px);line-height:1.3;letter-spacing:-0.02em;color:var(--fg);}
+.ab-sig{margin-top:36px;display:flex;align-items:center;gap:16px;border-top:1px solid var(--line);padding-top:26px;}
+.ab-sig .mk{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;color:#fff;border:1px solid var(--line-strong);}
+.ab-sig .who{font-size:13px;color:var(--fg-dim);line-height:1.5;}.ab-sig .who b{color:var(--fg);}
+.licenses{border-top:1px solid var(--line);padding:clamp(60px,9vh,120px) 0;}
+.lic-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:40px;}
+.lic{background:var(--bg);padding:22px 16px;text-align:center;transition:background .3s;}
+.lic:hover{background:var(--bg-2);}
+.lic .ab{font-family:var(--font-display);font-size:26px;}
+.lic .nm{font-family:var(--font-mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-faint);margin-top:6px;}
+@media(max-width:900px){.lic-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:680px){.ab-grid{grid-template-columns:1fr;}.ab-portrait{position:relative;top:0;max-width:360px;}.lic-grid{grid-template-columns:repeat(3,1fr);}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="veil"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="Recknagel Engineering"/><span class="bt"><span class="nm">Recknagel</span><span class="sub">Engineering</span></span></a>
+    <div class="nav-lk"><a href="projects.html">Work</a><a href="services.html">Services</a><a href="about.html" class="active">About</a><a href="contact.html">Contact</a></div>
+    <div class="nav-right">
+      <button class="theme-tog" id="themeTog" aria-label="Toggle light or dark mode" title="Toggle theme"><span class="ti"></span></button>
+      <a class="nav-cta" href="contact.html"><span class="d"></span>Start a project</a>
+      <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="phead">
+  <div class="wrap">
+    <div class="crumb"><span>Recknagel</span><span class="sep">/</span><span class="here">About</span></div>
+    <h1 class="rev in">A precast <em>specialist</em><span class="dot">.</span></h1>
+    <p class="lede rev in d1">Not a generalist with a precast folder — a practice built, end to end, around one material and the discipline it takes to stand it up.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="ab-grid">
+    <div class="ab-portrait rev in"><div class="ph" style="background-image:url('assets/founder.png')"></div><div class="cap">Jon Recknagel, P.E. · President &amp; Founder</div></div>
+    <div class="ab-body rev in d1">
+      <div class="slabel"><span class="num">01</span><span class="ln"></span><span class="tx">The firm</span></div>
+      <h2>Founded on a single <em>idea</em>.</h2>
+      <p>Recknagel Engineering was founded on a single idea — that precast deserves its own specialist. <span class="em">Most structural firms keep a precast folder</span> — a side service squeezed between steel and cast-in-place work, handed to whoever happens to be free. Precast doesn't reward that. The connections, the lifting stresses, the erection sequence, the plant's tolerances — they reward an engineer who lives in them every day, not one who visits between other deadlines.</p>
+      <p>Every project is led by a licensed PE with deep precast experience. Pre-construction support, gravity and lateral analysis, connection design, erection engineering, BIM coordination in Tekla Structures, full drafting, and PE stamping — all under one roof, all integrated.</p>
+      <div class="ab-quote">"Every panel, every connection, every stamp — engineered with the same discipline it takes to lift a warehouse off the ground."</div>
+      <p>We work lean, we stay accountable, and we're on the phone when the field calls. From a feasibility sketch to the final connection, we follow the project through the last panel. That's the job.</p>
+      <div class="ab-sig"><div class="mk">R</div><div class="who"><b>Jon Recknagel, P.E.</b><br>President &amp; Founder · Nashville, TN</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="licenses wrap">
+  <div class="slabel rev in"><span class="num">02</span><span class="ln"></span><span class="tx">Licensure · 14 States</span></div>
+  <div class="rev in d1" style="font-family:var(--font-display);font-weight:300;font-size:clamp(24px,3vw,40px);letter-spacing:-0.02em;max-width:22ch;">Licensed, active, and stamping across <em style="font-style:italic;">fourteen</em> states<span class="accent">.</span></div>
+  <div class="lic-grid rev in d2">
+    <div class="lic"><div class="ab">TN</div><div class="nm">Tennessee</div></div>
+    <div class="lic"><div class="ab">IA</div><div class="nm">Iowa</div></div>
+    <div class="lic"><div class="ab">MN</div><div class="nm">Minnesota</div></div>
+    <div class="lic"><div class="ab">TX</div><div class="nm">Texas</div></div>
+    <div class="lic"><div class="ab">CO</div><div class="nm">Colorado</div></div>
+    <div class="lic"><div class="ab">FL</div><div class="nm">Florida</div></div>
+    <div class="lic"><div class="ab">NV</div><div class="nm">Nevada</div></div>
+    <div class="lic"><div class="ab">WA</div><div class="nm">Washington</div></div>
+    <div class="lic"><div class="ab">CA</div><div class="nm">California</div></div>
+    <div class="lic"><div class="ab">IL</div><div class="nm">Illinois</div></div>
+    <div class="lic"><div class="ab">WI</div><div class="nm">Wisconsin</div></div>
+    <div class="lic"><div class="ab">MO</div><div class="nm">Missouri</div></div>
+    <div class="lic"><div class="ab">KS</div><div class="nm">Kansas</div></div>
+    <div class="lic"><div class="ab">NE</div><div class="nm">Nebraska</div></div>
+  </div>
+</section>
+
+<footer class="foot wrap">
+  <div class="foot-top">
+    <div><div class="brand-lg"><img src="assets/logo.png" alt=""/><span class="bt"><span class="nm">Recknagel</span><span class="sub">Engineering</span></span></div><p>Precast concrete structural engineering, stamped across fourteen states.</p></div>
+    <div class="fcol"><h4>Navigate</h4><a href="projects.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="fcol"><h4>Contact</h4><div>Nashville, Tennessee</div><a href="mailto:info@recknageleng.com">info@recknageleng.com</a><div>Licensed · 14 States</div></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 Recknagel Engineering</span><span>Structural engineering for precast concrete</span></div>
+</footer>
+
+<script src="scripts/bw.js"></script>
+</body>
+</html>

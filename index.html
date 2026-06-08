@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var t=localStorage.getItem('re-theme');if(t==='light'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+<title>Recknagel Engineering — Structural engineering for precast concrete.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/bw.css">
+<style>
+/* ===== HOME-SPECIFIC ===== */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:1;}
+.hero-bg .ly{position:absolute;inset:0;opacity:0;transition:opacity 1.8s ease;}
+.hero-bg .ly.on{opacity:1;}
+.hero-bg .ph{width:100%;height:100%;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.12) brightness(.6);transform:scale(1.08);}
+.hero-bg .ly.on .ph{animation:ken 9s linear forwards;}
+@keyframes ken{from{transform:scale(1.08)}to{transform:scale(1.18)}}
+.hero-scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(10,10,11,.72),rgba(10,10,11,.32) 30%,rgba(10,10,11,.4) 64%,rgba(10,10,11,.95)),radial-gradient(120% 80% at 50% 40%,transparent 40%,rgba(10,10,11,.7));}
+.hero-seams{position:absolute;inset:0;z-index:3;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/8 - 1px),rgba(0,0,0,.3) calc(100%/8 - 1px) calc(100%/8));mix-blend-mode:multiply;opacity:.4;}
+/* ===== LIGHT-MODE HERO — faint photo on the page background, dark text ===== */
+html[data-theme="light"] .hero{background:var(--bg);color:var(--fg);}
+html[data-theme="light"] .hero-bg .ph{filter:grayscale(1) contrast(.95) brightness(1.18);opacity:.5;}
+html[data-theme="light"] .hero-scrim{background:linear-gradient(180deg,rgba(246,245,242,.55),rgba(246,245,242,.35) 26%,rgba(246,245,242,.6) 62%,var(--bg) 96%),radial-gradient(120% 80% at 50% 38%,transparent 38%,rgba(246,245,242,.6));}
+html[data-theme="light"] .hero-seams{background:repeating-linear-gradient(90deg,transparent 0 calc(100%/8 - 1px),rgba(0,0,0,.16) calc(100%/8 - 1px) calc(100%/8));opacity:.5;}
+.hero-in{position:relative;z-index:5;height:100%;display:flex;flex-direction:column;justify-content:center;}
+.hero-eye{display:flex;align-items:center;gap:13px;margin-bottom:34px;}
+.hero-eye .d{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent-glow);}
+.hero-eye span{font-family:var(--font-mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-dim);}
+.hero h1{font-family:var(--font-display);font-weight:300;font-size:clamp(50px,10vw,164px);line-height:0.92;letter-spacing:-0.04em;}
+.hero h1 em{font-style:italic;font-weight:300;}
+.hero h1 .dot{color:var(--accent);}
+.hero-sub{margin-top:36px;max-width:50ch;font-size:clamp(15px,1.4vw,19px);line-height:1.6;color:var(--fg-dim);}
+.hero-sub b{color:var(--fg);font-weight:400;}
+.hero-cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;}
+.hero-foot{position:absolute;bottom:30px;left:0;right:0;z-index:5;}
+.hero-foot-in{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);display:flex;justify-content:space-between;align-items:flex-end;}
+.hero-scroll{display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--fg-dim);}
+.hero-scroll .bar{width:1px;height:42px;background:linear-gradient(var(--fg-faint),transparent);position:relative;overflow:hidden;}
+.hero-scroll .bar::after{content:"";position:absolute;top:0;left:0;width:100%;height:40%;background:var(--accent);animation:scrolldn 2.2s var(--ease) infinite;}
+@keyframes scrolldn{0%{transform:translateY(-100%)}60%,100%{transform:translateY(280%)}}
+.hero-ticker{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg-faint);text-align:right;}
+.hero-ticker b{color:var(--fg-dim);}
+
+/* ===== TRUSTED BY — continuous logo marquee ===== */
+.trust{padding:clamp(46px,7vh,80px) 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);}
+.trust-lab{display:flex;align-items:center;justify-content:center;gap:13px;margin-bottom:clamp(30px,4vh,48px);}
+.trust-lab .ln{width:34px;height:1px;background:var(--line-strong);}
+.trust-lab span.tx{font-family:var(--font-mono);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--fg-faint);}
+.trust-marq{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.trust-track{display:flex;width:max-content;animation:trustscroll 52s linear infinite;}
+.trust:hover .trust-track{animation-play-state:paused;}
+.trust-tile{flex:none;height:78px;margin-right:clamp(16px,1.9vw,30px);display:flex;align-items:center;justify-content:center;padding:0 clamp(22px,2.4vw,34px);background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.trust-tile img{max-height:48px;max-width:176px;width:auto;object-fit:contain;display:block;filter:grayscale(1);opacity:.74;transition:filter .4s var(--ease),opacity .4s var(--ease);}
+.trust-tile img.lg{max-height:66px;max-width:150px;}
+.trust-tile img.s-apc{max-height:78px;max-width:158px;}
+.trust-tile img.s-msp{max-height:72px;}
+.trust-tile img.s-redondo{max-height:74px;}
+.trust-tile img.s-warrior{max-height:78px;max-width:130px;}
+.trust-tile:hover img{filter:grayscale(0);opacity:1;}
+@keyframes trustscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.trust-track{animation:none;}}
+
+.statement{padding:clamp(90px,15vh,200px) 0 clamp(70px,10vh,140px);}
+.statement .big{font-family:var(--font-display);font-weight:300;font-size:clamp(28px,4.4vw,68px);line-height:1.08;letter-spacing:-0.025em;max-width:20ch;}
+.statement .big em{font-style:italic;}
+.statement .big .mut{color:var(--fg-faint);}
+.statement .meta{margin-top:54px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;border-top:1px solid var(--line);padding-top:34px;}
+.statement .meta p{font-size:16px;line-height:1.65;color:var(--fg-dim);max-width:52ch;}
+.statement .meta .side{font-family:var(--font-mono);font-size:12px;line-height:1.9;color:var(--fg-faint);text-transform:uppercase;letter-spacing:0.08em;}
+.statement .meta .side b{color:var(--fg);}
+@media(max-width:760px){.statement .meta{grid-template-columns:1fr;}}
+
+.work{padding:clamp(80px,12vh,150px) 0;}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:54px;}
+.work-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(34px,5vw,76px);line-height:0.98;letter-spacing:-0.03em;}
+.work-head h2 em{font-style:italic;}
+.work-head .vall{font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;color:var(--fg-dim);display:inline-flex;gap:9px;align-items:center;white-space:nowrap;transition:color .25s;}
+.work-head .vall:hover{color:var(--fg);}
+.work-head .vall .ar{color:var(--accent);}
+.feat{position:relative;display:block;overflow:hidden;border:1px solid var(--line);margin-bottom:18px;}
+.feat .img{aspect-ratio:21/9;overflow:hidden;background:#111;}
+.feat .img .ph{width:100%;height:100%;background-size:cover;background-position:center;transform:scale(1.02);transition:transform 1.4s var(--ease);}
+.feat:hover .img .ph{transform:scale(1.07);}
+.feat .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(24px,3vw,46px);background:linear-gradient(0deg,rgba(8,8,9,.86),rgba(8,8,9,.1) 56%,transparent);}
+.feat .award{position:absolute;top:22px;right:22px;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#2A2008;background:linear-gradient(180deg,#D8B45A,#B8923C);padding:7px 13px;}
+.feat .fr-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.feat .fr-title{font-family:var(--font-display);font-weight:300;font-size:clamp(28px,3.6vw,54px);line-height:1;letter-spacing:-0.02em;}
+.feat .fr-meta{margin-top:16px;display:flex;gap:24px;font-family:var(--font-mono);font-size:12px;color:var(--fg-dim);flex-wrap:wrap;}
+.feat .fr-meta b{color:var(--fg);}
+
+.caps{padding:clamp(70px,11vh,140px) 0;border-top:1px solid var(--line);}
+.caps-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(30px,6vw,90px);}
+.caps-grid .lead h2{font-family:var(--font-display);font-weight:300;font-size:clamp(30px,4vw,58px);line-height:1;letter-spacing:-0.03em;}
+.caps-grid .lead h2 em{font-style:italic;}
+.caps-grid .lead p{margin-top:26px;max-width:40ch;font-size:15.5px;line-height:1.6;color:var(--fg-dim);}
+.caplist{border-top:1px solid var(--line);}
+.caprow{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:24px 6px;border-bottom:1px solid var(--line-soft);cursor:pointer;position:relative;transition:padding-left .35s var(--ease);}
+.caprow::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease);}
+.caprow:hover{padding-left:20px;}
+.caprow:hover::before{transform:scaleY(1);}
+.caprow .cn{font-family:var(--font-mono);font-size:12px;color:var(--fg-faint);transition:color .3s;}
+.caprow:hover .cn{color:var(--accent);}
+.caprow .cnm{font-family:var(--font-display);font-size:clamp(20px,2.2vw,30px);letter-spacing:-0.01em;}
+.caprow .ct{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-faint);text-align:right;max-width:24ch;}
+@media(max-width:760px){.caps-grid{grid-template-columns:1fr;}.caprow .ct{display:none;}}
+
+.proc{padding:clamp(70px,11vh,140px) 0;border-top:1px solid var(--line);}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);}
+.pstep{background:var(--bg);padding:clamp(28px,3vw,44px);min-height:300px;display:flex;flex-direction:column;transition:background .4s;}
+.pstep:hover{background:var(--bg-2);}
+.pstep .pn{font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:0.06em;}
+.pstep .pt{font-family:var(--font-display);font-size:clamp(20px,2vw,28px);letter-spacing:-0.01em;margin-top:auto;margin-bottom:14px;}
+.pstep .pd{font-size:14px;line-height:1.55;color:var(--fg-dim);}
+@media(max-width:760px){.proc-grid{grid-template-columns:1fr 1fr;}.pstep{min-height:220px;}}
+
+.about{padding:clamp(80px,12vh,150px) 0;border-top:1px solid var(--line);}
+.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(34px,6vw,90px);align-items:center;}
+.about-portrait{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);}
+.about-portrait .ph{width:100%;height:100%;background-size:cover;background-position:center top;filter:grayscale(1) contrast(1.08) brightness(.9);transform:scale(1.02);transition:transform 1.6s var(--ease);}
+.about-portrait:hover .ph{transform:scale(1.06);}
+.about-portrait .cap{position:absolute;left:18px;bottom:16px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.8);}
+.about-content h2{font-family:var(--font-display);font-weight:300;font-size:clamp(30px,4vw,60px);line-height:1;letter-spacing:-0.03em;}
+.about-content h2 em{font-style:italic;}
+.about-content p{margin-top:24px;max-width:50ch;font-size:16px;line-height:1.65;color:var(--fg-dim);}
+.about-sig{margin-top:36px;display:flex;align-items:center;gap:16px;border-top:1px solid var(--line);padding-top:26px;}
+.about-sig .mk{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;color:#fff;border:1px solid var(--line-strong);}
+.about-sig .who{font-size:13px;color:var(--fg-dim);line-height:1.5;}
+.about-sig .who b{color:var(--fg);}
+
+.cta{padding:clamp(90px,16vh,210px) 0;border-top:1px solid var(--line);position:relative;overflow:hidden;text-align:center;}
+.cta h2{font-family:var(--font-display);font-weight:300;font-size:clamp(44px,9vw,150px);line-height:0.92;letter-spacing:-0.04em;}
+.cta h2 em{font-style:italic;}
+.cta h2 .dot{color:var(--accent);}
+.cta p{margin:30px auto 0;max-width:46ch;font-size:17px;line-height:1.6;color:var(--fg-dim);}
+.cta .ctabtns{margin-top:42px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.cta-marquee{position:absolute;bottom:-2vh;left:0;right:0;z-index:-1;font-family:var(--font-display);font-size:clamp(120px,22vw,360px);line-height:1;letter-spacing:-0.04em;color:transparent;-webkit-text-stroke:1px var(--marquee-stroke);white-space:nowrap;display:flex;}
+.cta-marquee span{animation:marq 40s linear infinite;}
+@keyframes marq{to{transform:translateX(-50%);}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="veil"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" alt="Recknagel Engineering"/>
+      <span class="bt"><span class="nm">Recknagel</span><span class="sub">Engineering</span></span>
+    </a>
+    <div class="nav-lk">
+      <a href="projects.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-tog" id="themeTog" aria-label="Toggle light or dark mode" title="Toggle theme"><span class="ti"></span></button>
+      <a class="nav-cta" href="contact.html"><span class="d"></span>Start a project</a>
+      <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg" id="herobg" data-imgs="assets/projects/shs-construction-1.jpg,assets/projects/cedarfalls-aerial-campus.jpg,assets/projects/simmons-hero.jpg,assets/projects/zerozone-hero.jpg,assets/projects/progressive-hero.jpg"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-in wrap">
+    <div class="rev in"><div class="hero-eye"><span class="d"></span><span>Precast Concrete · Structural Engineering</span></div></div>
+    <h1 class="rev in d1">Structural engineering<br>for <em>precast concrete</em><span class="dot">.</span></h1>
+    <p class="hero-sub rev in d2">From wall panels, hollow core, double tees, beams, and columns — <b>precast concrete is all we do, stamped across fourteen states.</b></p>
+    <div class="hero-cta rev in d3">
+      <a class="btn pri" href="contact.html">Start a project</a>
+      <a class="btn gho" href="projects.html">View the work <span class="ar">→</span></a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="hero-foot-in">
+      <div class="hero-scroll"><div class="bar"></div><span>Scroll</span></div>
+      <div class="hero-ticker"><b>Nashville, TN</b> — Est. 2018<br>Licensed in 14 States · 405+ Projects</div>
+    </div>
+  </div>
+</header>
+
+<!-- STATEMENT -->
+<section class="statement wrap rev">
+  <div class="slabel"><span class="num">01</span><span class="ln"></span><span class="tx">The practice</span></div>
+  <h2 class="big"><em>Precast deserves a specialist</em> — <span class="mut">not a generalist with a precast folder.</span></h2>
+  <div class="meta">
+    <p>Recknagel Engineering designs precast concrete systems for warehouses, beams, columns, and hollow-core structures. Specialty connection design, erection engineering, BIM coordination, and full panel design — led, every time, by a licensed PE with deep precast experience.</p>
+    <div class="side"><b>Recknagel Engineering</b><br>Nashville, Tennessee<br>Established 2018<br>Licensed · 14 States</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-in wrap">
+    <div class="stat rev"><div class="n" data-count="14">14</div><div class="l">States · Active P.E.</div></div>
+    <div class="stat rev d1"><div class="n" data-count="405" data-suffix="+">405+</div><div class="l">Projects Completed</div></div>
+    <div class="stat rev d2"><div class="n" data-count="1">1</div><div class="l">Discipline · Precast Only</div></div>
+    <div class="stat rev d3"><div class="n">2018<span class="u">.</span></div><div class="l">Nashville · Established</div></div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section class="trust rev">
+  <div class="trust-lab"><span class="ln"></span><span class="tx">Trusted by precast leaders</span><span class="ln"></span></div>
+  <div class="trust-marq">
+    <div class="trust-track">
+      <div class="trust-tile"><img src="assets/clients/county-prestress.png" alt="County Prestress & Precast"></div>
+      <div class="trust-tile"><img class="s-apc" src="assets/clients/advanced-precast.png" alt="Advanced Precast Company"></div>
+      <div class="trust-tile"><img class="s-msp" src="assets/clients/mid-south-prestress.png" alt="Mid-South Prestress"></div>
+      <div class="trust-tile"><img src="assets/clients/steinbauer.png" alt="SteinBauer LLC"></div>
+      <div class="trust-tile"><img src="assets/clients/mid-states-concrete.png" alt="Mid-States Concrete Industries"></div>
+      <div class="trust-tile"><img class="s-redondo" src="assets/clients/redondo.png" alt="Redondo Manufacturing"></div>
+      <div class="trust-tile"><img class="s-warrior" src="assets/clients/warrior-precast.png" alt="Warrior Precast"></div>
+      <div class="trust-tile"><img class="lg" src="assets/clients/stonecast.png" alt="Stonecast"></div>
+      <div class="trust-tile" aria-hidden="true"><img src="assets/clients/county-prestress.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img class="s-apc" src="assets/clients/advanced-precast.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img class="s-msp" src="assets/clients/mid-south-prestress.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img src="assets/clients/steinbauer.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img src="assets/clients/mid-states-concrete.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img class="s-redondo" src="assets/clients/redondo.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img class="s-warrior" src="assets/clients/warrior-precast.png" alt=""></div>
+      <div class="trust-tile" aria-hidden="true"><img class="lg" src="assets/clients/stonecast.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK (COLOR) -->
+<section class="work wrap" id="work">
+  <div class="work-head rev">
+    <div>
+      <div class="slabel"><span class="num">02</span><span class="ln"></span><span class="tx">Selected Work</span></div>
+      <h2>Projects we're <em>proud of</em>.</h2>
+    </div>
+    <a class="vall" href="projects.html">All projects <span class="ar">→</span></a>
+  </div>
+
+  <a class="feat rev" href="projects.html">
+    <div class="img"><div class="ph" style="background-image:url('assets/projects/cedarfalls-hero.jpg')"></div></div>
+    <div class="award"><span>★</span>2026 PCI Design Award</div>
+    <div class="ov">
+      <div class="fr-tag">Education · Award Winner</div>
+      <div class="fr-title">Cedar Falls High School</div>
+      <div class="fr-meta"><span><b>302k</b> sq ft</span><span><b>1,180</b> panels</span><span><b>Cedar Falls</b> · Iowa</span></div>
+    </div>
+  </a>
+
+  <div class="wgrid">
+    <a class="wcard rev" href="projects.html"><span class="idx">02</span><span class="stat-badge"><span class="pd"></span>Building</span><div class="img"><div class="ph" style="background-image:url('assets/projects/shs-rendering.jpg')"></div></div><div class="meta"><span class="t">SpringHill Suites</span><span class="g">Hospitality</span></div></a>
+    <a class="wcard rev d1" href="projects.html"><span class="idx">03</span><div class="img"><div class="ph" style="background-image:url('assets/projects/progressive-hero.jpg')"></div></div><div class="meta"><span class="t">Progressive Structures</span><span class="g">Industrial</span></div></a>
+    <a class="wcard rev d2" href="projects.html"><span class="idx">04</span><div class="img"><div class="ph" style="background-image:url('assets/projects/simmons-hero.jpg')"></div></div><div class="meta"><span class="t">Simmons Distribution</span><span class="g">Industrial</span></div></a>
+    <a class="wcard rev" href="projects.html"><span class="idx">05</span><div class="img"><div class="ph" style="background-image:url('assets/projects/zerozone-hero.jpg')"></div></div><div class="meta"><span class="t">Zero Zone Cold Storage</span><span class="g">Industrial</span></div></a>
+    <a class="wcard rev d1" href="projects.html"><span class="idx">06</span><div class="img"><div class="ph" style="background-image:url('assets/projects/russell-hero.jpg')"></div></div><div class="meta"><span class="t">Russell Spec 6</span><span class="g">Industrial</span></div></a>
+    <a class="wcard rev d2" href="projects.html"><span class="idx">07</span><div class="img"><div class="ph" style="background-image:url('assets/projects/coolidge-hero.jpg')"></div></div><div class="meta"><span class="t">West Willow Elementary</span><span class="g">Education</span></div></a>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="caps wrap" id="caps">
+  <div class="caps-grid">
+    <div class="lead rev">
+      <div class="slabel"><span class="num">03</span><span class="ln"></span><span class="tx">Capabilities</span></div>
+      <h2>Eight capabilities, one <em>discipline</em>.</h2>
+      <p>Precast concrete is the only discipline we practice — and within it we cover the full scope, from the first sales-engineering call through the last connection in the field, every package signed and sealed.</p>
+      <div style="margin-top:34px;"><a class="btn gho" href="services.html">All services <span class="ar">→</span></a></div>
+    </div>
+    <div class="caplist rev d1">
+      <a class="caprow" href="services.html"><span class="cn">01</span><span class="cnm">Pre-Construction Support</span><span class="ct">Sales Engineering · Budgeting · Feasibility</span></a>
+      <a class="caprow" href="services.html"><span class="cn">02</span><span class="cnm">Gravity Analysis</span><span class="ct">Load Paths · Capacity · Panel Design</span></a>
+      <a class="caprow" href="services.html"><span class="cn">03</span><span class="cnm">Lateral Analysis</span><span class="ct">Wind · Seismic · Diaphragms</span></a>
+      <a class="caprow" href="services.html"><span class="cn">04</span><span class="cnm">Connection Design</span><span class="ct">Embed Plates · Weld Studs · Inserts</span></a>
+      <a class="caprow" href="services.html"><span class="cn">05</span><span class="cnm">Erection Engineering</span><span class="ct">Lift Analysis · Pole Bracing · Sequence</span></a>
+      <a class="caprow" href="services.html"><span class="cn">06</span><span class="cnm">BIM &amp; 3D Coordination</span><span class="ct">Tekla Structures · Clash · Models</span></a>
+      <a class="caprow" href="services.html"><span class="cn">07</span><span class="cnm">Full Drafting Support</span><span class="ct">Approvals · Details · Tickets · Hardware</span></a>
+      <a class="caprow" href="services.html"><span class="cn">08</span><span class="cnm">PE Stamping</span><span class="ct">Signed &amp; Sealed · 14 States</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc wrap">
+  <div class="slabel rev"><span class="num">04</span><span class="ln"></span><span class="tx">How we work</span></div>
+  <div class="proc-grid rev d1">
+    <div class="pstep"><div class="pn">01 / Intake</div><div class="pt">Understand the system</div><div class="pd">We study the architectural intent, structural scheme, and erection sequence before touching a calc.</div></div>
+    <div class="pstep"><div class="pn">02 / Design</div><div class="pt">Engineer the pieces</div><div class="pd">Panels, connections, and lift points — designed to code, buildability, and the plant's capabilities.</div></div>
+    <div class="pstep"><div class="pn">03 / Deliver</div><div class="pt">Documents that get built</div><div class="pd">Stamped calcs, clear shop drawings, and direct answers on the phone when the field calls.</div></div>
+    <div class="pstep"><div class="pn">04 / Stand by</div><div class="pt">Support through erection</div><div class="pd">We follow the project through the last panel and the final connection. That's the job.</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about wrap" id="about">
+  <div class="about-grid">
+    <div class="about-portrait rev"><div class="ph" style="background-image:url('assets/founder.png')"></div><div class="cap">Jon Recknagel, P.E. · Founder</div></div>
+    <div class="about-content rev d1">
+      <div class="slabel"><span class="num">05</span><span class="ln"></span><span class="tx">The founder</span></div>
+      <h2>Built by a precast <em>specialist</em>.</h2>
+      <p>Recknagel Engineering was founded on a single idea — that precast deserves its own specialist, not a generalist with a precast folder.</p>
+      <p>Every project is led by a licensed PE with deep precast experience. We work lean, we stay accountable, and we're on the phone when you need us.</p>
+      <div class="about-sig">
+        <div class="mk">R</div>
+        <div class="who"><b>Jon Recknagel, P.E.</b><br>President &amp; Founder</div>
+      </div>
+      <div style="margin-top:30px;"><a class="btn gho" href="about.html">Meet the firm <span class="ar">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-marquee"><span>PRECAST — ENGINEERED — PRECAST — ENGINEERED — </span></div>
+  <div class="wrap rev">
+    <h2>Let's build<br>something <em>solid</em><span class="dot">.</span></h2>
+    <p>From feasibility sketch to stamped shop drawings — every inquiry lands with a PE, usually within one business day.</p>
+    <div class="ctabtns">
+      <a class="btn pri" href="contact.html">Start a project</a>
+      <a class="btn gho" href="projects.html">View the work <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot wrap">
+  <div class="foot-top">
+    <div>
+      <div class="brand-lg"><img src="assets/logo.png" alt=""/><span class="bt"><span class="nm">Recknagel</span><span class="sub">Engineering</span></span></div>
+      <p>Precast concrete structural engineering. Panel design, connections, and erection engineering, stamped across fourteen states.</p>
+    </div>
+    <div class="fcol"><h4>Navigate</h4><a href="projects.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="fcol"><h4>Contact</h4><div>Nashville, Tennessee</div><a href="mailto:info@recknageleng.com">info@recknageleng.com</a><div>Licensed · 14 States</div></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 Recknagel Engineering</span><span>Structural engineering for precast concrete</span></div>
+</footer>
+
+<script src="scripts/bw.js"></script>
+</body>
+</html>

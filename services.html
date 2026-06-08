@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{var t=localStorage.getItem('re-theme');if(t==='light'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches))document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
+<title>Services — Recknagel Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Geist:wght@300..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/bw.css">
+<style>
+.svc{border-top:1px solid var(--line);}
+.svc-row{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,90px);padding:clamp(40px,6vh,72px) 0;border-bottom:1px solid var(--line-soft);position:relative;transition:padding-left .4s var(--ease);}
+.svc-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease);}
+.svc-row:hover{padding-left:clamp(0px,1.5vw,24px);}
+.svc-row:hover::before{transform:scaleY(1);}
+.svc-num{font-family:var(--font-mono);font-size:13px;color:var(--fg-faint);padding-top:14px;transition:color .3s;}
+.svc-row:hover .svc-num{color:var(--accent);}
+.svc-main h3{font-family:var(--font-display);font-weight:300;font-size:clamp(28px,4vw,58px);line-height:1;letter-spacing:-0.025em;}
+.svc-main h3 em{font-style:italic;}
+.svc-main p{margin-top:18px;max-width:60ch;font-size:16px;line-height:1.6;color:var(--fg-dim);}
+.svc-tags{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;}
+.svc-tags span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-faint);border:1px solid var(--line);padding:6px 11px;border-radius:4px;}
+@media(max-width:680px){.svc-row{grid-template-columns:1fr;gap:10px;}.svc-num{padding-top:0;}}
+.cta-strip{border-top:1px solid var(--line);padding:clamp(80px,14vh,180px) 0;text-align:center;}
+.cta-strip h2{font-family:var(--font-display);font-weight:300;font-size:clamp(40px,7vw,110px);line-height:0.95;letter-spacing:-0.04em;}
+.cta-strip h2 em{font-style:italic;}.cta-strip h2 .dot{color:var(--accent);}
+.cta-strip p{margin:26px auto 36px;max-width:44ch;font-size:16px;line-height:1.6;color:var(--fg-dim);}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="veil"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="Recknagel Engineering"/><span class="bt"><span class="nm">Recknagel</span><span class="sub">Engineering</span></span></a>
+    <div class="nav-lk"><a href="projects.html">Work</a><a href="services.html" class="active">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="nav-right">
+      <button class="theme-tog" id="themeTog" aria-label="Toggle light or dark mode" title="Toggle theme"><span class="ti"></span></button>
+      <a class="nav-cta" href="contact.html"><span class="d"></span>Start a project</a>
+      <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="phead">
+  <div class="wrap">
+    <div class="crumb"><span>Recknagel</span><span class="sep">/</span><span class="here">Services</span></div>
+    <h1 class="rev in">What we <em>do</em><span class="dot">.</span></h1>
+    <p class="lede rev in d1">Precast concrete is the only discipline we practice — and within it we cover the full scope, from the first sales-engineering call through the last connection in the field. Every package <b>signed and sealed</b>.</p>
+  </div>
+</section>
+
+<section class="wrap svc" style="margin-top:clamp(40px,7vh,80px);border-top:none;">
+  <div class="svc-row rev in"><div class="svc-num">01</div><div class="svc-main"><h3>Pre-Construction <em>Support</em></h3><p>Sales-engineering support during pursuit and bidding — budget framing, feasibility checks, and early structural input that wins and de-risks the job.</p><div class="svc-tags"><span>Sales Engineering</span><span>Budgeting</span><span>Feasibility</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">02</div><div class="svc-main"><h3>Gravity <em>Analysis</em></h3><p>Load-path and capacity analysis for panels, beams, columns, and hollow-core — sized to the plant's sections and the project's demands.</p><div class="svc-tags"><span>Load Paths</span><span>Capacity</span><span>Panel Design</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">03</div><div class="svc-main"><h3>Lateral <em>Analysis</em></h3><p>Wind and seismic analysis with diaphragm and shear-wall design — keeping the precast system stable under every code-required lateral demand.</p><div class="svc-tags"><span>Wind</span><span>Seismic</span><span>Diaphragms</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">04</div><div class="svc-main"><h3>Connection <em>Design</em></h3><p>Specialty hardware, weld plates and embeds that make erection fast, tolerant, and safe in the field.</p><div class="svc-tags"><span>Embed Plates</span><span>Weld Studs</span><span>Inserts</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">05</div><div class="svc-main"><h3>Erection <em>Engineering</em></h3><p>Lift-point design, rigging calcs, pole bracing layouts, and full sequence planning for safe, predictable panel installation.</p><div class="svc-tags"><span>Lift Analysis</span><span>Pole Bracing</span><span>Sequence</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">06</div><div class="svc-main"><h3>BIM &amp; <em>3D Coordination</em></h3><p>Tekla Structures precast modeling, clash detection, and coordination with architects, MEPs, and GCs.</p><div class="svc-tags"><span>Tekla Structures</span><span>Clash</span><span>Coordination</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">07</div><div class="svc-main"><h3>Full Drafting <em>Support</em></h3><p>Approval drawings, erection details, production tickets, hardware schedules, and live support through fabrication.</p><div class="svc-tags"><span>Approvals</span><span>Details</span><span>Tickets</span><span>Hardware</span></div></div></div>
+  <div class="svc-row rev in"><div class="svc-num">08</div><div class="svc-main"><h3>PE <em>Stamping</em></h3><p>Everything signed and sealed — licensed professional engineer review and stamping across 14 states, with fast turnaround for in-house precast teams.</p><div class="svc-tags"><span>Signed &amp; Sealed</span><span>14 States</span></div></div></div>
+</section>
+
+<section class="cta-strip wrap">
+  <div class="rev in">
+    <h2>Have a precast<br>project in <em>motion</em><span class="dot">?</span></h2>
+    <p>Tell us what you're building. Every inquiry lands with a PE — usually within one business day.</p>
+    <a class="btn pri" href="contact.html">Start a project</a>
+  </div>
+</section>
+
+<footer class="foot wrap">
+  <div class="foot-top">
+    <div><div class="brand-lg"><img src="assets/logo.png" alt=""/><span class="bt"><span class="nm">Recknagel</span><span class="sub">Engineering</span></span></div><p>Precast concrete structural engineering, stamped across fourteen states.</p></div>
+    <div class="fcol"><h4>Navigate</h4><a href="projects.html">Work</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+    <div class="fcol"><h4>Contact</h4><div>Nashville, Tennessee</div><a href="mailto:info@recknageleng.com">info@recknageleng.com</a><div>Licensed · 14 States</div></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 Recknagel Engineering</span><span>Structural engineering for precast concrete</span></div>
+</footer>
+
+<script src="scripts/bw.js"></script>
+</body>
+</html>
